@@ -142,3 +142,155 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+// Destructuring
+
+/*
+// Useful to get data out of an object/array
+
+const book = getBook(1);
+
+// const title = book.title;
+// const author = book.author;
+
+const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
+  book;
+
+// const primaryGenre = genre[0];
+// const secondaryGenre = genre[1];
+
+// This is a rest element and needs to be at the end of the array
+const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
+
+// Takes out all of the elements in the array and replaces them one by one, spread operator
+const newGenres = [...genres, "epic fantasy"];
+
+const updatedBook = {
+  ...book, // Spread Operator
+  moviePublicationDate: "2001-12-19", // Add new property
+  pages: 1210, // Overriding, gotta go after spread
+};
+
+// Arrow functions
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+
+const getYear = (str) => str.split("-")[0]; // Don't need a function block neither a bracket
+
+// Template Literals
+const summary = `${title}, a ${pages} page long book, was written by ${author} and published in ${getYear(
+  publicationDate
+)}. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie`;
+
+// Ternaries, use ? and the first statement is true and second for false
+const pagesRange = pages > 1000 ? "over a thousand" : "less than 1000";
+
+//
+// Logical Operators
+// && - when the first value is true it will print second, if first false it prints first
+console.log(hasMovieAdaptation && "This book has a movie");
+
+// || - the inverse of && happens
+console.log(book.translations.spanish || "Not translated");
+
+// ?? - will only return the second value when the first is null or undefined, except zero or empty string
+console.log(book.translations.spanish ?? "Not translated");
+
+//
+//Optional Chaining
+function getTotalReviewCount(book) {
+  const goodread = book.reviews.goodreads?.reviewsCount ?? 0; // The coalece operator returns 0 instead of undefined
+  const librarything = book.reviews.librarything?.reviewsCount ?? 0; // Chain only continues if not undefined or null
+  return goodread + librarything;
+}
+*/
+
+//
+
+//
+
+//
+
+/*
+
+// Map Method
+
+const books = getBooks();
+
+const x = [1, 2, 3, 4, 5].map((el) => el * 2);
+console.log(x);
+
+const titles = books.map((book) => book.title);
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+}));
+
+// Filter Method
+
+const longBooksWithMovie = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+
+const adventureBooks = books.filter((book) =>
+  book.genres.includes("adventure").map((book) => book.title)
+);
+
+// Reduce Method
+
+const pagesAllBooks = books.reduce(
+  (accumulator, book) => accumulator + book.pages,
+  0
+);
+
+// Sort Method
+
+const arr = [3, 7, 1, 9, 6];
+const sorted = arr.slice().sort((a, b) => a - b); // use slice() to create a duplicate, ascending
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages); // Descending
+
+// 1) Add book object to array
+
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J. K. Rowling",
+};
+
+const booksAfterAdd = [...books, newBook];
+
+// 2) Delete book object from array
+
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+
+// 3) Update book object in the array
+
+const booksAfterUpdate = booksAfterUpdate.map((book) =>
+  book.id === 1 ? { ...book, pages: 1210 } : book
+);
+
+*/
+
+//
+
+//
+
+//
+
+// Promises
+
+fetch("api")
+  .then((res) => res.JSON())
+  .then((data) => console.log(data));
+
+// Async/Await
+
+async function getTodos() {
+  const res = await fetch("api");
+  const data = await res.JSON();
+}
+
+getTodos();
